@@ -3,14 +3,19 @@ var ctx = canvas.getContext("2d");
 
 if (canvas.width>=canvas.height){
   var radius = canvas.height/2;
-}
+  ctx.translate(canvas.height/2, canvas.height/2);
+  radius = radius * 0.50
+  setInterval(drawClock, 1000);
+  drawClock();}
 else  {
   radius = canvas.width/2; 
-}
-ctx.translate(canvas.width/2, canvas.height/2);
-radius = radius * 0.90
+  ctx.translate(canvas.width/2, canvas.width/2);
+  radius = radius * 0.50
 setInterval(drawClock, 1000);
 drawClock();
+}
+
+
 
 function drawClock() {
   drawFace(ctx, radius);
