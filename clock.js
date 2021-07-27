@@ -1,18 +1,17 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var radius = 0;
 
-if (canvas.width >= canvas.height) {
-  var radius = canvas.height / 2;
-  ctx.translate(canvas.height / 2, canvas.height / 2);
-  radius = radius * 0.50
-  setInterval(drawClock, 1000);
-  drawClock();
-}
-else {
-  radius = canvas.width / 2;
-  ctx.translate(canvas.width / 2, canvas.width / 2);
-  radius = radius * 0.50
-  setInterval(drawClock, 1000);
+function init(setIntervals) {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  this.radius = Math.min(canvas.width, canvas.height) * 0.45;
+  this.ctx.translate(window.innerWidth / 2, window.innerHeight / 2);
+  if (setIntervals) {
+    setInterval(drawClock, 1000);
+  }
+
   drawClock();
 }
 
@@ -91,3 +90,9 @@ function drawHand(ctx, pos, length, width) {
   ctx.stroke();
   ctx.rotate(-pos);
 }
+
+window.addEventListener("resize", (ev) => {
+  this.init(false);
+});
+
+init(true);
