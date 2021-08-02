@@ -95,4 +95,9 @@ window.addEventListener("resize", (ev) => {
   this.init(false);
 });
 
+
+function rightClickDisable() {
+    document.addEventListener('contextmenu', 
+    event => event.preventDefault());
+}         
 init(true);
